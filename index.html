@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOCKUP - AquaVillavo</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --azul:     #1565C0;
+    --azul2:    #1976D2;
+    --azul3:    #42A5F5;
+    --azul-claro: #E3F2FD;
+    --verde:    #2E7D32;
+    --verde2:   #43A047;
+    --amarillo: #F9A825;
+    --rojo:     #C62828;
+    --gris:     #F5F7FA;
+    --gris2:    #E8ECF0;
+    --gris3:    #90A4AE;
+    --texto:    #1A237E;
+    --texto2:   #37474F;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #0D1B2A;
+    min-height: 100vh;
+    padding: 40px 20px 60px;
+  }
+
+  /* Encabezado */
+  .header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .header-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(21,101,192,0.15);
+    border: 1px solid rgba(66,165,245,0.3);
+    border-radius: 50px;
+    padding: 8px 20px 8px 12px;
+    margin-bottom: 16px;
+  }
+  .header-logo svg { width: 28px; height: 28px; }
+  .header-logo span {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    color: #42A5F5;
+    letter-spacing: -0.5px;
+  }
+  .header h1 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 6px;
+  }
+  .header p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* Grid de pantallas */
+  .screens {
+    display: flex;
+    gap: 28px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  /* Teléfono */
+  .phone-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .phone-label {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .phone {
+    width: 220px;
+    background: #111827;
+    border-radius: 36px;
+    padding: 10px;
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.08),
+      0 20px 60px rgba(0,0,0,0.7),
+      0 0 40px rgba(21,101,192,0.15);
+    position: relative;
+  }
+  .phone-inner {
+    background: #fff;
+    border-radius: 28px;
+    overflow: hidden;
+    height: 440px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  /* Notch */
+  .phone::before {
+    content: '';
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 14px;
+    background: #111827;
+    border-radius: 8px;
+    z-index: 10;
+  }
+
+  /* Status bar */
+  .status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 14px 6px;
+    font-size: 9px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .status-bar.dark { background: var(--azul); color: #fff; }
+  .status-bar.light { background: #fff; color: var(--texto2); }
+  .status-icons { display: flex; gap: 4px; align-items: center; }
+
+  /* Top bar */
+  .topbar {
+    display: flex;
+    align-items: center;
+    padding: 8px 14px 10px;
+    flex-shrink: 0;
+  }
+  .topbar.blue { background: var(--azul); color: #fff; }
+  .topbar.white { background: #fff; border-bottom: 1px solid var(--gris2); color: var(--texto); }
+  .topbar-title {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    flex: 1;
+    text-align: center;
+  }
+  .topbar-back {
+    font-size: 18px;
+    cursor: pointer;
+    width: 24px;
+  }
+  .topbar-icon {
+    width: 24px;
+    height: 24px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .logo-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+  }
+  .logo-row svg { width: 20px; height: 20px; }
+  .logo-row span {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 17px;
+    color: #fff;
+  }
+
+  /* Scroll area */
+  .scroll-area {
+    flex: 1;
+    overflow: hidden;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: var(--gris);
+  }
+  .scroll-area.white { background: #fff; }
+
+  /* Cards */
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 10px 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  }
+  .card-title {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    color: var(--gris3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  /* Greeting */
+  .greeting {
+    background: var(--azul);
+    padding: 12px 14px 10px;
+    flex-shrink: 0;
+  }
+  .greeting-name {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: #fff;
+  }
+  .greeting-sector {
+    font-size: 10px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 1px;
+  }
+
+  /* Status badge */
+  .status-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--verde);
+    border-radius: 10px;
+    padding: 8px 10px;
+    color: #fff;
+  }
+  .status-badge.warning { background: var(--amarillo); }
+  .status-badge.danger  { background: var(--rojo); }
+  .status-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.8);
+    flex-shrink: 0;
+  }
+  .status-main {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+  }
+  .status-sub { font-size: 9px; opacity: 0.85; }
+
+  /* Alert box */
+  .alert-box {
+    background: #FFF8E1;
+    border-left: 3px solid var(--amarillo);
+    border-radius: 8px;
+    padding: 7px 9px;
+  }
+  .alert-header {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    color: #F57F17;
+    margin-bottom: 3px;
+  }
+  .alert-text { font-size: 9px; color: var(--texto2); }
+
+  /* Mini map */
+  .mini-map {
+    border-radius: 10px;
+    overflow: hidden;
+    height: 90px;
+    background: #E8F5E9;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .mini-map svg { width: 100%; height: 100%; }
+
+  /* Bottom nav */
+  .bottom-nav {
+    display: flex;
+    background: #fff;
+    border-top: 1px solid var(--gris2);
+    flex-shrink: 0;
+  }
+  .nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 7px 4px 8px;
+    gap: 3px;
+    font-size: 8px;
+    font-weight: 600;
+    color: var(--gris3);
+    cursor: pointer;
+  }
+  .nav-item.active { color: var(--azul); }
+  .nav-item svg { width: 16px; height: 16px; }
+  .nav-pill {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin: 6px 4px;
+    padding: 5px 4px;
+    border-radius: 8px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 9px;
+    cursor: pointer;
+  }
+  .nav-pill svg { width: 12px; height: 12px; }
+  .nav-pill.blue  { background: var(--azul);    color: #fff; }
+  .nav-pill.green { background: var(--verde2);  color: #fff; }
+  .nav-pill.red   { background: #E53935;        color: #fff; }
+
+  /* Mapa pantalla 2 */
+  .map-full {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+  }
+  .map-full svg { width: 100%; height: 100%; }
+  .map-legend {
+    position: absolute;
+    top: 8px; left: 8px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 8px;
+    padding: 5px 8px;
+    display: flex;
+    gap: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  }
+  .legend-item {
+    display: flex; align-items: center; gap: 3px;
+    font-size: 8px; font-weight: 600; color: var(--texto2);
+  }
+  .legend-dot { width: 7px; height: 7px; border-radius: 50%; }
+
+  /* Formulario pantalla 3 */
+  .form-label {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    color: var(--texto2);
+    margin-bottom: 4px;
+    display: block;
+  }
+  .form-input {
+    width: 100%;
+    background: var(--gris);
+    border: 1.5px solid var(--gris2);
+    border-radius: 8px;
+    padding: 7px 10px;
+    font-size: 10px;
+    color: var(--texto2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .form-chips {
+    display: flex; gap: 5px; flex-wrap: wrap;
+  }
+  .chip {
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 9px;
+    font-weight: 700;
+    border: 1.5px solid var(--gris2);
+    color: var(--gris3);
+    display: flex; align-items: center; gap: 3px;
+  }
+  .chip.active { border-color: var(--azul); background: var(--azul-claro); color: var(--azul); }
+  .chip.green  { border-color: var(--verde2); background: #E8F5E9; color: var(--verde); }
+  .chip.yellow { border-color: var(--amarillo); background: #FFF8E1; color: #E65100; }
+  .chip.red    { border-color: var(--rojo); background: #FFEBEE; color: var(--rojo); }
+
+  .btn-main {
+    background: var(--azul);
+    color: #fff;
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    margin-top: auto;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  /* Pantalla 4 — reportar */
+  .report-option {
+    background: #fff;
+    border-radius: 10px;
+    padding: 9px 11px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    cursor: pointer;
+  }
+  .report-option.active { border: 1.5px solid var(--azul); background: var(--azul-claro); }
+  .report-icon {
+    width: 26px; height: 26px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 13px;
+  }
+  .report-text {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    color: var(--texto2);
+  }
+
+  /* Pantalla 5 — historial */
+  .hist-item {
+    background: #fff;
+    border-radius: 10px;
+    padding: 9px 11px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .hist-badge {
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .hist-main {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    color: var(--texto);
+  }
+  .hist-sub { font-size: 9px; color: var(--gris3); margin-top: 1px; }
+  .hist-chip {
+    margin-left: auto;
+    padding: 2px 7px;
+    border-radius: 20px;
+    font-size: 8px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* Pantalla 6 — perfil/sector */
+  .sector-card {
+    background: linear-gradient(135deg, var(--azul), #1976D2);
+    border-radius: 12px;
+    padding: 12px;
+    color: #fff;
+  }
+  .sector-name {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+  }
+  .sector-sub { font-size: 9px; opacity: 0.75; margin-top: 2px; }
+  .sector-stats {
+    display: flex; gap: 6px; margin-top: 10px;
+  }
+  .stat-box {
+    flex: 1;
+    background: rgba(255,255,255,0.15);
+    border-radius: 8px;
+    padding: 6px 8px;
+    text-align: center;
+  }
+  .stat-val {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+  }
+  .stat-lbl { font-size: 8px; opacity: 0.8; }
+
+  .info-row {
+    display: flex; gap: 6px;
+  }
+  .info-box {
+    flex: 1;
+    background: #fff;
+    border-radius: 10px;
+    padding: 8px 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .info-box-title {
+    font-size: 8px;
+    color: var(--gris3);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .info-box-val {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    color: var(--texto);
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-logo">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8 7 5 10.5 5 14a7 7 0 0014 0c0-3.5-3-7-7-12z" fill="#42A5F5"/><path d="M12 8c-2 3-3 5-3 6a3 3 0 006 0c0-1-1-3-3-6z" fill="#E3F2FD"/></svg>
+    <span>AquaVillavo</span>
+  </div>
+  <h1>Mockup — Diseño de Interfaz</h1>
+  <p>Sistema de gestión del racionamiento de agua · Villavicencio</p>
+</div>
+
+<div class="screens">
+
+  <!-- PANTALLA 1: INICIO -->
+  <div class="phone-wrap">
+    <div class="phone-label">Pantalla 1 · Inicio</div>
+    <div class="phone">
+      <div class="phone-inner">
+        <div class="status-bar dark">
+          <span>9:41</span>
+          <div class="status-icons">
+            <svg width="10" height="8" viewBox="0 0 10 8" fill="white"><rect x="0" y="2" width="2" height="6" rx="0.5"/><rect x="3" y="1" width="2" height="7" rx="0.5"/><rect x="6" y="0" width="2" height="8" rx="0.5"/></svg>
+            <svg width="10" height="8" viewBox="0 0 10 8" fill="white"><path d="M5 1C3 1 1.5 2 0.5 3.5L2 5C2.7 3.8 3.7 3 5 3s2.3.8 3 2L9.5 3.5C8.5 2 7 1 5 1z"/><circle cx="5" cy="7" r="1"/></svg>
+            <svg width="14" height="8" viewBox="0 0 14 8" fill="white"><rect x="0" y="1" width="11" height="6" rx="1" stroke="white" stroke-width="1" fill="none"/><rect x="1" y="2" width="8" height="4" rx="0.5" fill="white"/><rect x="11.5" y="3" width="1.5" height="2" rx="0.5" fill="white"/></svg>
+          </div>
+        </div>
+        <div class="topbar blue">
+          <div class="logo-row">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8 7 5 10.5 5 14a7 7 0 0014 0c0-3.5-3-7-7-12z" fill="white"/></svg>
+            <span>AquaVillavo</span>
+          </div>
+          <div class="topbar-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="greeting">
+          <div class="greeting-name">Hola, Andrés! 👋</div>
+          <div class="greeting-sector">Sector: Villa Julia · Comuna 4</div>
+        </div>
+        <div class="scroll-area">
+          <div class="status-badge">
+            <div class="status-dot"></div>
+            <div>
+              <div class="status-main">Servicio Activo</div>
+              <div class="status-sub">Suministro hoy: 6:00 AM – 12:00 PM</div>
+            </div>
+          </div>
+          <div class="alert-box">
+            <div class="alert-header">⚠ Alertas</div>
+            <div class="alert-text">Trabajos de mantenimiento programados para el martes en su zona.</div>
+          </div>
+          <div class="mini-map">
+            <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg">
+              <rect width="200" height="90" fill="#C8E6C9"/>
+              <ellipse cx="100" cy="45" rx="70" ry="35" fill="#A5D6A7" opacity="0.6"/>
+              <path d="M30 45 Q60 30 90 40 Q110 48 130 38 Q155 28 175 45" stroke="#64B5F6" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <rect x="55" y="25" width="28" height="20" rx="4" fill="#EF9A9A" opacity="0.8"/>
+              <rect x="100" y="35" width="32" height="22" rx="4" fill="#FFE082" opacity="0.8"/>
+              <rect x="140" y="22" width="24" height="18" rx="4" fill="#80CBC4" opacity="0.8"/>
+              <circle cx="69" cy="35" r="3" fill="#C62828"/>
+              <circle cx="116" cy="46" r="3" fill="#F9A825"/>
+              <circle cx="152" cy="31" r="3" fill="#2E7D32"/>
+              <text x="100" y="78" text-anchor="middle" font-size="8" fill="#37474F" font-family="sans-serif" font-weight="bold">Villavicencio</text>
+            </svg>
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-pill blue">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="white" stroke-width="2" stroke-linejoin="round"/></svg>
+            Inicio
+          </div>
+          <div class="nav-pill green">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="white" stroke-width="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+            Mapa
+          </div>
+          <div class="nav-pill red">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="white" stroke-width="2" stroke-linejoin="round"/></svg>
+            Reportar
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANTALLA 2: MAPA -->
+  <div class="phone-wrap">
+    <div class="phone-label">Pantalla 2 · Mapa de Suministro</div>
+    <div class="phone">
+      <div class="phone-inner">
+        <div class="status-bar dark">
+          <span>9:41</span>
+          <div class="status-icons">
+            <svg width="10" height="8" viewBox="0 0 10 8" fill="white"><rect x="0" y="2" width="2" height="6" rx="0.5"/><rect x="3" y="1" width="2" height="7" rx="0.5"/><rect x="6" y="0" width="2" height="8" rx="0.5"/></svg>
+            <svg width="14" height="8" viewBox="0 0 14 8" fill="white"><rect x="0" y="1" width="11" height="6" rx="1" stroke="white" stroke-width="1" fill="none"/><rect x="1" y="2" width="8" height="4" rx="0.5" fill="white"/></svg>
+          </div>
+        </div>
+        <div class="topbar blue">
+          <div class="topbar-back">‹</div>
+          <div class="topbar-title" style="color:#fff">Mapa de Suministro</div>
+          <div style="width:24px"></div>
+        </div>
+        <div class="map-full">
+          <svg viewBox="0 0 220 340" xmlns="http://www.w3.org/2000/svg">
+            <rect width="220" height="340" fill="#E8F5E9"/>
+            <!-- Zonas de color -->
+            <ellipse cx="110" cy="170" rx="90" ry="110" fill="#A5D6A7" opacity="0.5"/>
+            <ellipse cx="90" cy="160" rx="50" ry="60" fill="#FFE082" opacity="0.7"/>
+            <ellipse cx="115" cy="175" rx="35" ry="40" fill="#EF9A9A" opacity="0.75"/>
+            <ellipse cx="140" cy="145" rx="30" ry="35" fill="#FFE082" opacity="0.6"/>
+            <!-- Calles -->
+            <line x1="20" y1="170" x2="200" y2="170" stroke="#B0BEC5" stroke-width="2"/>
+            <line x1="110" y1="60" x2="110" y2="300" stroke="#B0BEC5" stroke-width="2"/>
+            <line x1="50" y1="100" x2="170" y2="250" stroke="#CFD8DC" stroke-width="1.5"/>
+            <!-- Río -->
+            <path d="M15 200 Q60 185 100 200 Q140 215 185 195" stroke="#64B5F6" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <!-- Carrotanques -->
+            <g transform="translate(75,130)">
+              <rect x="-12" y="-8" width="24" height="16" rx="4" fill="#1565C0"/>
+              <rect x="-10" y="-6" width="20" height="10" rx="3" fill="#42A5F5"/>
+              <circle cx="-6" cy="8" r="4" fill="#37474F"/>
+              <circle cx="6" cy="8" r="4" fill="#37474F"/>
+              <circle cx="-6" cy="8" r="2" fill="#90A4AE"/>
+              <circle cx="6" cy="8" r="2" fill="#90A4AE"/>
+            </g>
+            <g transform="translate(140,200)">
+              <rect x="-12" y="-8" width="24" height="16" rx="4" fill="#1565C0"/>
+              <rect x="-10" y="-6" width="20" height="10" rx="3" fill="#42A5F5"/>
+              <circle cx="-6" cy="8" r="4" fill="#37474F"/>
+              <circle cx="6" cy="8" r="4" fill="#37474F"/>
+              <circle cx="-6" cy="8" r="2" fill="#90A4AE"/>
+              <circle cx="6" cy="8" r="2" fill="#90A4AE"/>
+            </g>
+            <g transform="translate(80,240)">
+              <rect x="-12" y="-8" width="24" height="16" rx="4" fill="#1565C0"/>
+              <rect x="-10" y="-6" width="20" height="10" rx="3" fill="#42A5F5"/>
+              <circle cx="-6" cy="8" r="4" fill="#37474F"/>
+              <circle cx="6" cy="8" r="4" fill="#37474F"/>
+              <circle cx="-6" cy="8" r="2" fill="#90A4AE"/>
+              <circle cx="6" cy="8" r="2" fill="#90A4AE"/>
+            </g>
+            <!-- Marcador usuario -->
+            <circle cx="110" cy="170" r="7" fill="#1565C0" stroke="white" stroke-width="2"/>
+            <circle cx="110" cy="170" r="3" fill="white"/>
+            <text x="110" y="310" text-anchor="middle" font-size="9" fill="#37474F" font-family="sans-serif" font-weight="bold">Villavicencio</text>
+          </svg>
+          <div class="map-legend">
+            <div class="legend-item"><div class="legend-dot" style="background:#43A047"></div>Normal</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#F9A825"></div>Racionamiento</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#C62828"></div>Sin servicio</div>
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <div class="nav-pill blue">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="white" stroke-width="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+            Mapa
+          </div>
+          <div class="nav-pill green">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M1 3h15v13H1zM16 8l4 2-4 2V8z" stroke="white" stroke-width="2" stroke-linejoin="round"/></svg>
+            N/Cingiema
+          </div>
+          <div class="nav-pill red">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Historial
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANTALLA 3: SOLICITAR CARROTANQUE -->
+  <div class="phone-wrap">
+    <div class="phone-label">Pantalla 3 · Solicitar Carrotanque</div>
+    <div class="phone">
+      <div class="phone-inner">
+        <div class="status-bar light">
+          <span>9:41</span>
+          <div class="status-icons">
+            <svg width="10" height="8" viewBox="0 0 10 8" fill="#37474F"><rect x="0" y="2" width="2" height="6" rx="0.5"/><rect x="3" y="1" width="2" height="7" rx="0.5"/><rect x="6" y="0" width="2" height="8" rx="0.5"/></svg>
+          </div>
+        </div>
+        <div class="topbar white">
+          <div class="topbar-back" style="color:var(--azul)">‹</div>
+          <div class="topbar-title">Solicitud de Carrotanque</div>
+          <div style="width:24px"></div>
+        </div>
+        <div class="scroll-area white" style="gap:10px; padding:12px;">
+          <div>
+            <span class="form-label">Sector:</span>
+            <div class="form-input">
+              <span>Villa Julia</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#90A4AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <div>
+            <span class="form-label">Dirección:</span>
+            <div class="form-input"><span style="color:#90A4AE">Calle 12 #23-45</span></div>
+          </div>
+          <div>
+            <span class="form-label">Tipo de Necesidad:</span>
+            <div class="form-chips">
+              <div class="chip active">🏠 Hogar</div>
+              <div class="chip">🏥 Hospital</div>
+              <div class="chip">🏫 Colegio</div>
+            </div>
+          </div>
+          <div>
+            <span class="form-label">Nivel de Urgencia:</span>
+            <div class="form-chips">
+              <div class="chip green">🟢 Baja</div>
+              <div class="chip yellow">🟡 Media</div>
+              <div class="chip red active" style="border-color:#C62828;background:#FFEBEE;color:#C62828">🔴 Alta</div>
+            </div>
+          </div>
+          <div>
+            <span class="form-label">Descripción:</span>
+            <div class="form-input" style="height:52px; align-items:flex-start; padding-top:8px;">
+              <span style="color:#B0BEC5; font-size:9px;">Describe tu situación...</span>
+            </div>
+          </div>
+          <div class="btn-main">Solicitar Carrotanque</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANTALLA 4: REPORTAR PROBLEMA -->
+  <div class="phone-wrap">
+    <div class="phone-label">Pantalla 4 · Reportar Problema</div>
+    <div class="phone">
+      <div class="phone-inner">
+        <div class="status-bar light">
+          <span>9:41</span>
+          <div class="status-icons">
+            <svg width="10" height="8" viewBox="0 0 10 8" fill="#37474F"><rect x="0" y="2" width="2" height="6" rx="0.5"/><rect x="3" y="1" width="2" height="7" rx="0.5"/><rect x="6" y="0" width="2" height="8" rx="0.5"/></svg>
+          </div>
+        </div>
+        <div class="topbar white">
+          <div class="topbar-back" style="color:var(--azul)">‹</div>
+          <div class="topbar-title">Reportar Problema</div>
+          <div style="width:24px"></div>
+        </div>
+        <div class="scroll-area" style="gap:7px;">
+          <div class="report-option active">
+            <div class="report-icon" style="background:#E3F2FD">💧</div>
+            <span class="report-text">Fuga de Agua</span>
+          </div>
+          <div class="report-option">
+            <div class="report-icon" style="background:#FFF8E1">🔧</div>
+            <span class="report-text">Daño en Tubería</span>
+          </div>
+          <div class="report-option">
+            <div class="report-icon" style="background:#FFEBEE">🚛</div>
+            <span class="report-text">No llegó el Carrotanque</span>
+          </div>
+          <div class="report-option">
+            <div class="report-icon" style="background:#F3E5F5">📋</div>
+            <span class="report-text">Información Incorrecta</span>
+          </div>
+          <div class="report-option" style="background:var(--azul-claro);border:1.5px solid var(--azul)">
+            <div class="report-icon" style="background:var(--azul)">📸</div>
+            <span class="report-text" style="color:var(--azul)">Adjuntar Foto</span>
+          </div>
+          <div>
+            <span class="form-label">Descripción:</span>
+            <div class="form-input" style="height:48px; align-items:flex-start; padding-top:7px;">
+              <span style="color:#B0BEC5; font-size:9px;">Describe el problema...</span>
+            </div>
+          </div>
+          <div class="btn-main">Enviar Reporte</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANTALLA 5: HISTORIAL -->
+  <div class="phone-wrap">
+    <div class="phone-label">Pantalla 5 · Historial</div>
+    <div class="phone">
+      <div class="phone-inner">
+        <div class="status-bar light">
+          <span>9:41</span>
+          <div class="status-icons">
+            <svg width="10" height="8" viewBox="0 0 10 8" fill="#37474F"><rect x="0" y="2" width="2" height="6" rx="0.5"/><rect x="3" y="1" width="2" height="7" rx="0.5"/><rect x="6" y="0" width="2" height="8" rx="0.5"/></svg>
+          </div>
+        </div>
+        <div class="topbar white">
+          <div class="topbar-back" style="color:var(--azul)">‹</div>
+          <div class="topbar-title">Historial de Reportes</div>
+          <div style="width:24px"></div>
+        </div>
+        <div class="scroll-area" style="gap:7px;">
+          <div class="hist-item">
+            <div class="hist-badge" style="background:#FFEBEE">💧</div>
+            <div>
+              <div class="hist-main">Fuga de Agua</div>
+              <div class="hist-sub">Calle 12 · 10 Mar 2026</div>
+            </div>
+            <div class="hist-chip" style="background:#E8F5E9;color:#2E7D32">Resuelto</div>
+          </div>
+          <div class="hist-item">
+            <div class="hist-badge" style="background:#FFF8E1">🚛</div>
+            <div>
+              <div class="hist-main">No llegó Carrotanque</div>
+              <div class="hist-sub">Sector Villa Julia · 8 Mar 2026</div>
+            </div>
+            <div class="hist-chip" style="background:#FFF8E1;color:#E65100">En revisión</div>
+          </div>
+          <div class="hist-item">
+            <div class="hist-badge" style="background:#E3F2FD">🔧</div>
+            <div>
+              <div class="hist-main">Daño en Tubería</div>
+              <div class="hist-sub">Calle 8 · 5 Mar 2026</div>
+            </div>
+            <div class="hist-chip" style="background:#E8F5E9;color:#2E7D32">Resuelto</div>
+          </div>
+          <div class="hist-item">
+            <div class="hist-badge" style="background:#F3E5F5">📋</div>
+            <div>
+              <div class="hist-main">Info Incorrecta</div>
+              <div class="hist-sub">App · 1 Mar 2026</div>
+            </div>
+            <div class="hist-chip" style="background:#FFEBEE;color:#C62828">Pendiente</div>
+          </div>
+          <div class="hist-item">
+            <div class="hist-badge" style="background:#E3F2FD">💧</div>
+            <div>
+              <div class="hist-main">Solicitud Carrotanque</div>
+              <div class="hist-sub">Villa Julia · 28 Feb 2026</div>
+            </div>
+            <div class="hist-chip" style="background:#E8F5E9;color:#2E7D32">Atendido</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANTALLA 6: SECTOR / PERFIL -->
+  <div class="phone-wrap">
+    <div class="phone-label">Pantalla 6 · Mi Sector</div>
+    <div class="phone">
+      <div class="phone-inner">
+        <div class="status-bar dark">
+          <span>9:41</span>
+          <div class="status-icons">
+            <svg width="10" height="8" viewBox="0 0 10 8" fill="white"><rect x="0" y="2" width="2" height="6" rx="0.5"/><rect x="3" y="1" width="2" height="7" rx="0.5"/><rect x="6" y="0" width="2" height="8" rx="0.5"/></svg>
+            <svg width="14" height="8" viewBox="0 0 14 8" fill="white"><rect x="0" y="1" width="11" height="6" rx="1" stroke="white" stroke-width="1" fill="none"/><rect x="1" y="2" width="8" height="4" rx="0.5" fill="white"/></svg>
+          </div>
+        </div>
+        <div class="topbar blue">
+          <div class="topbar-back">‹</div>
+          <div class="topbar-title" style="color:#fff">Mi Sector</div>
+          <div style="width:24px"></div>
+        </div>
+        <div class="scroll-area" style="gap:8px;">
+          <div class="sector-card">
+            <div class="sector-name">Villa Julia</div>
+            <div class="sector-sub">Comuna 4 · Villavicencio</div>
+            <div class="sector-stats">
+              <div class="stat-box">
+                <div class="stat-val">6h</div>
+                <div class="stat-lbl">Hoy</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-val">3</div>
+                <div class="stat-lbl">Alertas</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-val">2</div>
+                <div class="stat-lbl">Carrotanques</div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">Horario de hoy</div>
+            <div style="display:flex;gap:6px;margin-top:4px;">
+              <div style="flex:1;background:var(--azul-claro);border-radius:8px;padding:7px;text-align:center;">
+                <div style="font-size:9px;color:var(--gris3)">Mañana</div>
+                <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;color:var(--azul)">6:00 – 12:00</div>
+              </div>
+              <div style="flex:1;background:var(--gris);border-radius:8px;padding:7px;text-align:center;">
+                <div style="font-size:9px;color:var(--gris3)">Tarde</div>
+                <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;color:var(--gris3)">Sin servicio</div>
+              </div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-box">
+              <div class="info-box-title">Técnico asignado</div>
+              <div class="info-box-val">Ricardo M.</div>
+            </div>
+            <div class="info-box">
+              <div class="info-box-title">Estado zona</div>
+              <div class="info-box-val" style="color:var(--amarillo)">Racionamiento</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">Próximo suministro</div>
+            <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;color:var(--azul);margin-top:4px;">Mañana · 6:00 AM</div>
+            <div style="font-size:9px;color:var(--gris3);margin-top:2px;">Duración estimada: 5 horas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div style="text-align:center;margin-top:48px;">
+  <p style="font-size:11px;color:rgba(255,255,255,0.2);letter-spacing:1px;">AQUAVILLAVO · Universidad Minuto de Dios · Desarrollo de Software · 2026</p>
+  <p style="font-size:10px;color:rgba(255,255,255,0.12);margin-top:4px;">Jhonnier Grimaldo · Dana Gómez · Juan Lugo</p>
+</div>
+
+</body>
+</html>
